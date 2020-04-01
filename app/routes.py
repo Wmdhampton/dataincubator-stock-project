@@ -22,6 +22,21 @@ def createFig(data,ticker):
     p.line(data.index[-30:], data['Close'][-30:], line_width=2)
     return p
 
+# @app.route('/')
+# @app.route('/index')
+# def index():
+#     #ticker = 'GOOG'
+#     ticker = request.args.get("ticker")
+#     if ticker == None:
+#         ticker = 'AAPL'
+#     data = getData(ticker)
+#     p = createFig(data,ticker)
+    
+#     # Embed plot into HTML via Flask Render
+#     [script, div] = components(p)
+    
+#     return render_template("stock.html", script=script, div=div)
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -35,4 +50,4 @@ def index():
     # Embed plot into HTML via Flask Render
     [script, div] = components(p)
     
-    return render_template("stock.html", script=script, div=div)
+    return str(data['Close'][-1:])
