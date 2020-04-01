@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 import quandl
-import matplotlib
 quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
 def getData(ticker):
