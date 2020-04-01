@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 import quandl
+quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
 def getData(ticker):
     dataSource = 'WIKI/' + ticker
@@ -20,7 +21,6 @@ def createFig(data,ticker):
 @app.route('/index')
 def index():
     #ticker = 'GOOG'
-    quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
     ticker = request.args.get("ticker")
     if ticker == None:
         ticker = 'AAPL'
