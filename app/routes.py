@@ -4,7 +4,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 import quandl
 import requests
-quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
+#quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
 def getData(ticker):
     # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % ticker
