@@ -6,15 +6,14 @@ import quandl
 import requests
 quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
+#Get stock data from WIKI data set using quandl API
 def getData(ticker):
-    # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % ticker
-    # session = requests.Session()
-    # session.mount('http://', requests.adapters.HTTPAdapter(max_retries=3))
-    # raw_data = session.get(api_url)
+    period = 30
     dataSource = 'WIKI/' + ticker
-    data = quandl.get(dataSource, rows=30)
+    data = quandl.get(dataSource, rows=period)
     return data
 
+#Make Bokeh figure
 def createFig(data,ticker):
     p = figure(title=ticker+' close', x_axis_type='datetime')
     p.xaxis.axis_label = 'Date'
@@ -25,8 +24,9 @@ def createFig(data,ticker):
 @app.route('/')
 @app.route('/index')
 def index():
-    #ticker = 'GOOG'
+    #get ticker input from user
     ticker = request.args.get("ticker")
+    #plot AAPL data to start
     if ticker == None:
         ticker = 'AAPL'
     data = getData(ticker)
@@ -36,18 +36,3 @@ def index():
     [script, div] = components(p)
     
     return render_template("stock.html", script=script, div=div)
-
-# @app.route('/')
-# @app.route('/index')
-# def index():
-#     #ticker = 'GOOG'
-#     ticker = request.args.get("ticker")
-#     if ticker == None:
-#         ticker = 'AAPL'
-#     data = getData(ticker)
-#     p = createFig(data,ticker)
-    
-#     # Embed plot into HTML via Flask Render
-#     [script, div] = components(p)
-    
-#     return str(data['Close'][-1:])

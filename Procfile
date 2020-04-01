@@ -1,1 +1,1 @@
-web: gunicorn microblog:app
+web: gunicorn stocks:app
