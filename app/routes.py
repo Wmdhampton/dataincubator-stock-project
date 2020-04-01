@@ -3,7 +3,6 @@ from flask import Flask, render_template, request
 from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 import quandl
-import requests
 quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
 #Get stock data from WIKI data set using quandl API
