@@ -6,5 +6,5 @@ Jinja2==2.11.1
 MarkupSafe==1.1.1
 python-dotenv==0.12.0
 Werkzeug==1.0.1
-bokeh
+bokeh==2.0.1
 quandl
