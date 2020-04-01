@@ -1,6 +1,0 @@
-pandas
-dill
-jinja2
-pip
-simplejson
-
