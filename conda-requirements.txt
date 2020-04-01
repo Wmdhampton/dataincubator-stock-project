@@ -1,5 +1,4 @@
 pandas
-bokeh==2.0.1
 dill
 jinja2
 pip
