@@ -4,7 +4,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 import quandl
 import requests
-#quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
+quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
 def getData(ticker):
     # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % ticker
@@ -22,21 +22,6 @@ def createFig(data,ticker):
     p.line(data.index[-30:], data['Close'][-30:], line_width=2)
     return p
 
-# @app.route('/')
-# @app.route('/index')
-# def index():
-#     #ticker = 'GOOG'
-#     ticker = request.args.get("ticker")
-#     if ticker == None:
-#         ticker = 'AAPL'
-#     data = getData(ticker)
-#     p = createFig(data,ticker)
-    
-#     # Embed plot into HTML via Flask Render
-#     [script, div] = components(p)
-    
-#     return render_template("stock.html", script=script, div=div)
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -50,4 +35,19 @@ def index():
     # Embed plot into HTML via Flask Render
     [script, div] = components(p)
     
-    return str(data['Close'][-1:])
+    return render_template("stock.html", script=script, div=div)
+
+# @app.route('/')
+# @app.route('/index')
+# def index():
+#     #ticker = 'GOOG'
+#     ticker = request.args.get("ticker")
+#     if ticker == None:
+#         ticker = 'AAPL'
+#     data = getData(ticker)
+#     p = createFig(data,ticker)
+    
+#     # Embed plot into HTML via Flask Render
+#     [script, div] = components(p)
+    
+#     return str(data['Close'][-1:])
