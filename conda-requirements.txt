@@ -3,4 +3,4 @@ dill
 jinja2
 pip
 simplejson
-quandl
+
