@@ -1,13 +1,18 @@
 from app import app
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 import quandl
+import requests
 quandl.ApiConfig.api_key = "visprKjKxPE5TXHoFLw5"
 
 def getData(ticker):
+    # api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % ticker
+    # session = requests.Session()
+    # session.mount('http://', requests.adapters.HTTPAdapter(max_retries=3))
+    # raw_data = session.get(api_url)
     dataSource = 'WIKI/' + ticker
-    data = quandl.get(dataSource)
+    data = quandl.get(dataSource, rows=30)
     return data
 
 def createFig(data,ticker):
