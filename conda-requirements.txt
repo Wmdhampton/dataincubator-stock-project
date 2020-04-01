@@ -1,7 +1,6 @@
 pandas
 bokeh==2.0.1
 dill
-flask
 jinja2
 pip
 simplejson
